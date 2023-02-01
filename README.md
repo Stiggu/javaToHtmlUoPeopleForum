@@ -6,7 +6,6 @@ Got the motivation to make a small script that will parse the Java to HTML, usin
 |--------------|-----------------------------------------------------------------------|
 | /*comment:   | Marks the start of a text block                                       |
 | endcomment*/ | Marks the end of a text block                                         |
-| endcomment*/ | Marks the end of a text block                                         |
 | //code:      | Marks the start of the Java code                                      |
 | //endcode    | Marks the end of the Java code (</pre></code>)                        |
 | \r           | Marks the place where two <br> will be inserted, for spacing          |
