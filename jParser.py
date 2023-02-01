@@ -54,18 +54,18 @@ class Parser:
             helper = ""
             for x in range(len(lines)):
                 background = "#111" if x % 2 == 0 else "black"
-                error = "red" if "//error" in lines[x] else "black"
+                background = "#300" if "//error" in lines[x] else background
                 lines[x] = lines[x].replace("//error", "")
-                helper += f'<span style="background-color: {background}; display:inline-block;"><span style="float:left; background-color:{error};">{x}</span>   <span>{lines[x]}</span></span>'
+                helper += f'<span style="background-color: {background}"><span style="float:left; background-color:{background};">{x}</span>   <span>{lines[x]}</span></span>\n'
             self.line_aggregator = helper
             for word in keywords:
                 if word not in self.line_aggregator:
                     continue
                 self.line_aggregator = self.line_aggregator.replace(f"{word} ", f"<span style=\"color: orange;\">{word}</span> ")
 
-            self.line_aggregator = re.sub(r'(//.+)\n', r'<span style="color: gray !important;">\1</span>', self.line_aggregator)
+            self.line_aggregator = re.sub(r'(//.+)\n', r'<span style="color: gray !important;">\1</span>\n', self.line_aggregator)
             self.line_aggregator = re.sub(r'(\b\w+)\(', r'<span style="color: yellow;">\1</span>(', self.line_aggregator)
-            self.output += '<pre style="background-color: black; color: white; padding: 15px; border: 4mm inset rgb(75, 52, 94)"><code style="display:flex; flex-direction: column">' + self.line_aggregator + "</code></pre>"
+            self.output += '<pre style="background-color: black; color: white; padding: 15px; border: 4mm inset rgb(75, 52, 94)"><code style="display:flex !important; flex-direction: column !important">' + self.line_aggregator + "</code></pre>"
         self.line_aggregator = ""
         self.output += "\n"
 
