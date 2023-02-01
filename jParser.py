@@ -1,6 +1,8 @@
 from enum import Enum
 import re
 
+INPUT_FILE = "./example.java"
+
 keywords = ["abstract", "continue", "for", "new", "switch",
             "assert", "default", "goto", "package", "synchronized",
             "boolean", "do", "if", "private", "this",
@@ -31,7 +33,7 @@ def convert_word_to_keyword(word: str) -> str:
 
 
 def get_file():
-    with open("./example.java", "r") as f:
+    with open(INPUT_FILE, "r") as f:
         return f.readlines()
 
 
